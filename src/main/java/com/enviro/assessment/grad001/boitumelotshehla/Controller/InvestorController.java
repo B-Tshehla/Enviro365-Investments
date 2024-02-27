@@ -1,6 +1,9 @@
 package com.enviro.assessment.grad001.boitumelotshehla.Controller;
 
+import com.enviro.assessment.grad001.boitumelotshehla.dto.InvestorDto;
+import com.enviro.assessment.grad001.boitumelotshehla.model.Address;
 import com.enviro.assessment.grad001.boitumelotshehla.model.Investor;
+import com.enviro.assessment.grad001.boitumelotshehla.model.Product;
 import com.enviro.assessment.grad001.boitumelotshehla.repository.InvestorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

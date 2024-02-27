@@ -18,9 +18,11 @@ public class Investor {
     private String firstName;
     private String middleName;
     private String lastName;
+    private String idNumber;
     private String email;
-    //TODO: create model for  address
-     private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
     @OneToMany(mappedBy = "investor")
     private List<WithdrawalNotice> withdrawalNotices;
     @ManyToMany

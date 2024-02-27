@@ -16,8 +16,9 @@ public class WithdrawalNotice {
     private Long id;
     private BigDecimal amount;
     private LocalDateTime withdrawalDate;
-    //TODO: create table for banking details
-    private String bankingDetails;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bank_details_id")
+    private BankingDetails bankingDetails;
     @ManyToOne
     @JoinColumn(name = "investor_id")
     private Investor investor;
