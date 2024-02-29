@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "product_seq")
     private Long id;
@@ -20,10 +19,7 @@ public class Product {
     private ProductType type;
     private String name;
     private BigDecimal currentBalance;
-    @ManyToMany(mappedBy = "products")
-    private List<Investor> investors;
-    @OneToMany(mappedBy = "product")
-    private List<WithdrawalNotice> withdrawalNotices;
-
-
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "investor_id")
+    Investor investor;
 }

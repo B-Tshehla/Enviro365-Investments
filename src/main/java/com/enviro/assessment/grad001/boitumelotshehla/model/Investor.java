@@ -7,10 +7,9 @@ import lombok.experimental.Accessors;
 
 import java.util.List;
 
+@Entity
 @Accessors(chain = true)
 @Data
-@Entity
-@Getter
 public class Investor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "investor_seq")
@@ -20,16 +19,9 @@ public class Investor {
     private String lastName;
     private String idNumber;
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
-    @OneToMany(mappedBy = "investor")
-    private List<WithdrawalNotice> withdrawalNotices;
-    @ManyToMany
-    @JoinTable(
-            name = "investor_product",
-            joinColumns = @JoinColumn(name = "investor_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
-
+    private Integer streetNumber;
+    private String streetName;
+    private String city;
+    private Integer postalCode;
+    private String province;
 }
