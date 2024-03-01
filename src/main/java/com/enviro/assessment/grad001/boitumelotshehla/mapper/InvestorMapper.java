@@ -11,7 +11,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface InvestorMapper {
 
 
-
     @Mapping(source = "investorId", target = "id")
     Investor toEntity(InvestorDto investorDto);
 

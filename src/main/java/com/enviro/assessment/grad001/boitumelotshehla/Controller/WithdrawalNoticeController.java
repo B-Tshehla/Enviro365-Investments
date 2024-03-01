@@ -18,15 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class WithdrawalNoticeController {
 
     private final WithdrawalNoticeService withdrawalNoticeService;
+
     @PostMapping("/withdrawal")
-    void createWithdrawalNotice(@RequestBody WithdrawalNoticeDto withdrawalNoticeDto){
-        log.debug("createWithdrawalNotice() - start: withdrawalNoticeDto = {}",withdrawalNoticeDto);
+    void createWithdrawalNotice(@RequestBody WithdrawalNoticeDto withdrawalNoticeDto) {
+        log.debug("createWithdrawalNotice() - start: withdrawalNoticeDto = {}", withdrawalNoticeDto);
         withdrawalNoticeService.createWithdrawalNotice(withdrawalNoticeDto);
         log.debug("createWithdrawalNotice() - end:");
     }
 
     @PostMapping("/export")
-    void exportNoticesToCsv(@RequestBody NoticeExportRequestDto noticeExportRequestDto, HttpServletResponse response){
+    void exportNoticesToCsv(@RequestBody NoticeExportRequestDto noticeExportRequestDto, HttpServletResponse response) {
         log.debug("exportNoticesToCsv() - start: noticeExportRequestDto = {}", noticeExportRequestDto);
         withdrawalNoticeService.exportNoticesToCsv(noticeExportRequestDto, response);
         log.debug("exportNoticesToCsv() - end:");

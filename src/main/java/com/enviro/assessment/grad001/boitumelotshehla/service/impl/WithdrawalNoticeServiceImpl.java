@@ -18,7 +18,6 @@ import com.enviro.assessment.grad001.boitumelotshehla.service.ProductService;
 import com.enviro.assessment.grad001.boitumelotshehla.service.WithdrawalNoticeService;
 import com.enviro.assessment.grad001.boitumelotshehla.service.specification.WithdrawalNoticeSpecification;
 import com.opencsv.CSVWriter;
-import com.opencsv.exceptions.CsvException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ValidationException;
@@ -27,12 +26,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -84,7 +81,7 @@ public class WithdrawalNoticeServiceImpl implements WithdrawalNoticeService {
         Integer investorAge = investorService.getInvestorAge(productDto.getInvestorId());
         BigDecimal availableAmount = productDto.getCurrentBalance().multiply(WITHDRAWAL_PERCENTAGE);
 
-        if (investorAge < 65 && productDto.getType().equals(ProductType.RETIREMENT)) {
+        if (investorAge <= 65 && productDto.getType().equalsIgnoreCase(ProductType.RETIREMENT.getValue())) {
             throw new ValidationException("Withdrawal failed: You are younger than 65 and want to withdraw from retirement");
         }
         if (withdrawalNoticeDto.getWithdrawal().compareTo(productDto.getCurrentBalance()) > 0) {
@@ -124,7 +121,7 @@ public class WithdrawalNoticeServiceImpl implements WithdrawalNoticeService {
                         notice.getAmount().toString(),
                         notice.getProduct().getType().name(),
                         notice.getProduct().getName(),
-                        String.format("%s %s",notice.getProduct().getInvestor().getFirstName(),notice.getProduct().getInvestor().getLastName()),
+                        String.format("%s %s", notice.getProduct().getInvestor().getFirstName(), notice.getProduct().getInvestor().getLastName()),
                         notice.getBankName(),
                         notice.getAccountType(),
                         notice.getBranchCode(),

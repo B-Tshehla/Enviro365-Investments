@@ -1,12 +1,18 @@
 package com.enviro.assessment.grad001.boitumelotshehla.Controller;
 
-import com.enviro.assessment.grad001.boitumelotshehla.businesscontrol.InvestorValidation;
+import com.enviro.assessment.grad001.boitumelotshehla.businesscontrol.Impl.InvestorValidationImpl;
 import com.enviro.assessment.grad001.boitumelotshehla.dto.InvestorDto;
 import com.enviro.assessment.grad001.boitumelotshehla.service.InvestorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -15,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class InvestorController {
     private final InvestorService investorService;
-    private final InvestorValidation investorValidation;
+    private final InvestorValidationImpl investorValidation;
 
     @PostMapping("/investor")
     ResponseEntity<InvestorDto> createInvestor(@RequestBody InvestorDto investorDto) {

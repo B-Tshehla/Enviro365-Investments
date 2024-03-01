@@ -1,6 +1,12 @@
 package com.enviro.assessment.grad001.boitumelotshehla.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.UpdateTimestamp;

@@ -18,12 +18,14 @@ public class exceptionHandler {
                 e, e.getMessage(), e.getStackTrace());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
     @ExceptionHandler(ValidationException.class)
     ResponseEntity<String> handleValidationException(ValidationException e) {
         log.error("handleValidationException() - error, e = {}, message = {}, stackTrace = {}",
                 e, e.getMessage(), e.getStackTrace());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
+
     @ExceptionHandler(BirthDateExtractionException.class)
     ResponseEntity<String> handleBirthDateExtractionException(BirthDateExtractionException e) {
         log.error("handleBirthDateExtractionException() - error, e = {}, message = {}, stackTrace = {}",
@@ -37,6 +39,7 @@ public class exceptionHandler {
                 e, e.getMessage(), e.getStackTrace());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
     }
+
     @ExceptionHandler(CsvException.class)
     ResponseEntity<String> handleCsvException(CsvException e) {
         log.error("handleCsvException() - error, e = {}, message = {}, stackTrace = {}",
@@ -45,9 +48,9 @@ public class exceptionHandler {
     }
 
     @ExceptionHandler(NoProductTypeException.class)
-    ResponseEntity<String> NoProductTypeException(CsvException e) {
+    ResponseEntity<String> NoProductTypeException(NoProductTypeException e) {
         log.error("handleNoProductTypeException() - error, e = {}, message = {}, stackTrace = {}",
                 e, e.getMessage(), e.getStackTrace());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

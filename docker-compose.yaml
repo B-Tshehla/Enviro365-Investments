@@ -1,13 +1,4 @@
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:14
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=enviro365investments
   mailhog:
     container_name: mailhog
     image: mailhog/mailhog:latest

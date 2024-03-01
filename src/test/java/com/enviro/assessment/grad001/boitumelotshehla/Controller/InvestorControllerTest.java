@@ -318,7 +318,7 @@ class InvestorControllerTest extends AbstractIntegrationTest {
 
     @Test
     void findInvestorByInvalidIdTest() {
-        Long id = 1L;
+        Long id = 99L;
         webTestClient.get()
                 .uri("api/v1/investor/{investor-id}", id)
                 .exchange()
@@ -371,7 +371,7 @@ class InvestorControllerTest extends AbstractIntegrationTest {
 
     @Test
     void updateInvestorByInvalidIdTest() {
-        Long id = 1L;
+        Long id = 99L;
         InvestorDto requestDto = new InvestorDto()
                 .setCity("Pretoria");
 

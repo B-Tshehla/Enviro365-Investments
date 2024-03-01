@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WithdrawalNoticeRepository extends JpaRepository<WithdrawalNotice,Long>, JpaSpecificationExecutor<WithdrawalNotice> {
+public interface WithdrawalNoticeRepository extends JpaRepository<WithdrawalNotice, Long>, JpaSpecificationExecutor<WithdrawalNotice> {
 }
 

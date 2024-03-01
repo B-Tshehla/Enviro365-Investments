@@ -1,6 +1,5 @@
 package com.enviro.assessment.grad001.boitumelotshehla.dto;
 
-import com.enviro.assessment.grad001.boitumelotshehla.model.enums.ProductType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

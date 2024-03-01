@@ -1,19 +1,17 @@
 package com.enviro.assessment.grad001.boitumelotshehla.Controller;
 
-import com.enviro.assessment.grad001.boitumelotshehla.dto.InvestorDto;
 import com.enviro.assessment.grad001.boitumelotshehla.dto.ProductDto;
-import com.enviro.assessment.grad001.boitumelotshehla.model.Investor;
-import com.enviro.assessment.grad001.boitumelotshehla.model.Product;
-import com.enviro.assessment.grad001.boitumelotshehla.model.enums.ProductType;
-import com.enviro.assessment.grad001.boitumelotshehla.repository.InvestorRepository;
-import com.enviro.assessment.grad001.boitumelotshehla.repository.ProductRepository;
 import com.enviro.assessment.grad001.boitumelotshehla.service.ProductService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -48,7 +46,7 @@ public class ProductController {
     }
 
     @PutMapping("/product/{product-id}")
-    ProductDto updateProductById(@PathVariable("product-id") Long productId, @RequestBody ProductDto productDto){
+    ProductDto updateProductById(@PathVariable("product-id") Long productId, @RequestBody ProductDto productDto) {
         log.debug("updateProductById() - start: productId = {}", productId);
         ProductDto updatedProductDto = productService.updateProductById(productDto, productId);
         log.debug("updateProductById() - end: updatedProductDto = {}", updatedProductDto);

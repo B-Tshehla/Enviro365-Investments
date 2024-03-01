@@ -1,11 +1,9 @@
 package com.enviro.assessment.grad001.boitumelotshehla.service.impl;
 
-import com.enviro.assessment.grad001.boitumelotshehla.dto.InvestorDto;
 import com.enviro.assessment.grad001.boitumelotshehla.dto.ProductDto;
 import com.enviro.assessment.grad001.boitumelotshehla.mapper.ProductMapper;
 import com.enviro.assessment.grad001.boitumelotshehla.model.Investor;
 import com.enviro.assessment.grad001.boitumelotshehla.model.Product;
-import com.enviro.assessment.grad001.boitumelotshehla.model.enums.ProductType;
 import com.enviro.assessment.grad001.boitumelotshehla.repository.InvestorRepository;
 import com.enviro.assessment.grad001.boitumelotshehla.repository.ProductRepository;
 import com.enviro.assessment.grad001.boitumelotshehla.service.ProductService;
@@ -30,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto createProduct(ProductDto productDto) {
         log.debug("createProduct() - start: productDto = {}",productDto);
-        ProductType.valueOf(productDto.getType());
         Investor investor = investorRepository.findById(productDto.getInvestorId())
                 .orElseThrow(() -> new EntityNotFoundException(String.format(INVESTOR_NOT_FOUND, productDto.getInvestorId())));
         Product product = productMapper.toEntity(productDto, investor);

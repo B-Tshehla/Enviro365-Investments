@@ -9,12 +9,14 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+
 @Service
 @RequiredArgsConstructor
 public class NotificationServiceImpl implements NotificationService {
     private final JavaMailSender emailSender;
+
     @Override
-    public void sendWithdrawalNotification(String firstName, String email , BigDecimal withdrawalAmount, BigDecimal currentBalance, BigDecimal closingBalance) {
+    public void sendWithdrawalNotification(String firstName, String email, BigDecimal withdrawalAmount, BigDecimal currentBalance, BigDecimal closingBalance) {
         String emailSubject = "Withdrawal Notice";
         String emailBody = """
                 Dear %s
